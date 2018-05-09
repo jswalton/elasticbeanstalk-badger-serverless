@@ -12,9 +12,9 @@ Issue GitHub badges for your Beanstalk evironments that look like this:
 
 
 ## Why?
-For software projects that rely on multiple elasticbeanstalk environments for QA, Development, Production, Etc. it can often times be difficult for different function of the team to understand what version of the codebase is deployed, and on what environment it is deployed.
+For software projects that rely on multiple elasticbeanstalk environments for QA, Development, Production, Etc. it can often times be difficult for different functions of the team (QA, Developers, Project Owners, PM, Requirements people, etc.) to understand what version of the codebase is deployed, if the environment is up and running, and on what environment the code is deployed.
 
-Badges are a simple way to call out environment status and version deployed.
+Badges are a simple way to call out environment status and version deployed in order to avoid confusion amongst the team.
 
 ## Running it in AWS
 This project uses [serverless framework](https://serverless.com/) to deploy and operate the serverless app.
