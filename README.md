@@ -16,6 +16,22 @@ For software projects that rely on multiple elasticbeanstalk environments for QA
 
 Badges are a simple way to call out environment status and version deployed in order to avoid confusion amongst the team.
 
+
+### Non-Supported Event Sources
+Unfortunately ElasticBeanstalkis is *NOT* a supported event source for lambda. A more ideal architecture for this would be to have elasticbeanstalk fire off a environment change event and lambda would respond generating a badge and saving it as a static resource to S3
+
+In the future (if AWS adds more event sources):
+
+`EB event > Lambda > S3 object (badge .svg)`
+
+You could then use the S3 object URL to show your badges and be hands off with this process
+
+--------
+Unfortunately for now we are forced to generate the SVG return it as a binary image/svg type to the API Gateway. It's a little bit too much overhead for such a small task.
+
+### Final Disclaimer
+This project was used as a way for me to personally solve a problem using a "serverless" architecture. Please be careful when deploying this to your AWS environments and be aware of the resources its using. *I claim no responsibility for charges incurred by deploying this code.*
+
 ## Running it in AWS
 This project uses [serverless framework](https://serverless.com/) to deploy and operate the serverless app.
 
