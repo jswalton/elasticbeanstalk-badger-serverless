@@ -40,7 +40,8 @@ functions:
 
 You can now get a badge for your beanstalk environments by sending a GET request to the following url as listed above:
 
-```https://xxxxxxx.execute-api.xx-region-x.amazonaws.com/dev/getBadge/{environmentId}
+```
+https://xxxxxxx.execute-api.xx-region-x.amazonaws.com/dev/getBadge/{environmentId}
 ```
 
 and replacing `{environmentId}` with the environment id you wish to get a badge for
