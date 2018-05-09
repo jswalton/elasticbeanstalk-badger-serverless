@@ -1,4 +1,4 @@
-Stupid easy badge issuer for AWS Beanstalk Evironments
+Stupid easy badge issuer for AWS Beanstalk Evironments.
 
 Issue GitHub badges for your Beanstalk evironments that look like this:
 
@@ -10,6 +10,11 @@ Issue GitHub badges for your Beanstalk evironments that look like this:
 
 ![alt text](http://img.shields.io/badge/Your%20Beanstalk%20Environment-Updating_Version_0.0-lightgrey.svg)
 
+
+## Why?
+For software projects that rely on multiple elasticbeanstalk environments for QA, Development, Production, Etc. it can often times be difficult for different function of the team to understand what version of the codebase is deployed, and on what environment it is deployed.
+
+Badges are a simple way to call out environment status and version deployed.
 
 ## Running it in AWS
 This project uses [serverless framework](https://serverless.com/) to deploy and operate the serverless app.
