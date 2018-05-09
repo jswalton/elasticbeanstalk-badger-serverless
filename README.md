@@ -29,8 +29,8 @@ You could then use the S3 object URL to show your badges and be hands off with t
 --------
 Unfortunately for now we are forced to generate the SVG return it as a binary image/svg type to the API Gateway. It's a little bit too much overhead for such a small task.
 
-### Final Disclaimer
-This project was used as a way for me to personally solve a problem using a "serverless" architecture. Please be careful when deploying this to your AWS environments and be aware of the resources its using. *I claim no responsibility for charges incurred by deploying this code.*
+### Disclaimer
+This project was used as a way for me to personally solve a problem using a "serverless" architecture. Please be careful when deploying this to your AWS environments and be aware of the resources its using. ***I claim no responsibility for charges incurred by deploying this code.***
 
 ## Running it in AWS
 This project uses [serverless framework](https://serverless.com/) to deploy and operate the serverless app.
