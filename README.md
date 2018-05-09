@@ -54,3 +54,18 @@ and replacing `{environmentId}` with the environment id you wish to get a badge 
 ## Running it locally
 
 Serverless has some features that allow you to run locally.
+
+## IAM Execution role
+ElasticBeanstalk-badger uses the following IAM execution role to execute the lambda function that queries the requested environment for it's description.
+
+```yaml
+iamRoleStatementsName: elasticbeanstalk-badger-describe-environments-lambda #optional custom role name setting instead of the default generated one
+iamRoleStatements:
+	- Effect: "Allow"
+		Action:
+			- elasticbeanstalk:DescribeEnvironments
+		Resource: "arn:aws:elasticbeanstalk:${self:provider.region}:*"
+```
+This execution role has the ability to DescribeEnvironments for any environment in the provider region belonging to any resource within elasticbeanstalk.
+
+If your resource ARN is known and you want to restrict further, please edit `serverless.yml` to do so.
