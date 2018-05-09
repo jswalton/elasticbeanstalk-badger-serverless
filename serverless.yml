@@ -25,13 +25,6 @@ provider:
 #  stage: dev
 #  region: us-east-1
 
-#you can add statements to the Lambda function's IAM Role here
-iamRoleStatements:
-  - Effect: "Allow"
-    Action:
-      - "elasticbeanstalk:DescribeEnvironments"
-    Resource: "arn:aws:elasticbeanstalk:*:*:*"
-
 # you can define service wide environment variables here
 #  environment:
 #    variable1: value1
@@ -45,6 +38,13 @@ package:
 functions:
   getBadge:
     handler: bin/getBadge
+    #per function IAM Role per best practive
+    iamRoleStatementsName: elasticbeanstalk-badger-describe-environments-lambda #optional custom role name setting instead of the default generated one
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - elasticbeanstalk:DescribeEnvironments
+        Resource: "arn:aws:elasticbeanstalk:${self:provider.region}:*"
     # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
@@ -55,6 +55,9 @@ functions:
             parameters:
               paths:
                 environmentId: true
+
+plugins:
+  - serverless-iam-roles-per-function
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
