@@ -12,7 +12,7 @@ Issue GitHub badges for your Beanstalk evironments that look like this:
 
 
 ## Running it in AWS
-This project uses ![serverless framework](https://serverless.com/) to deploy and operate the serverless app.
+This project uses [serverless framework](https://serverless.com/) to deploy and operate the serverless app.
 
 in order to deploy to your AWS environment, install serverless and run:
 
