@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: aws-go # NOTE: update this with your service name
+service: elasticbeanstalk-badger # NOTE: update this with your service name
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -25,21 +25,12 @@ provider:
 #  stage: dev
 #  region: us-east-1
 
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
+#you can add statements to the Lambda function's IAM Role here
+iamRoleStatements:
+  - Effect: "Allow"
+    Action:
+      - "elasticbeanstalk:DescribeEnvironments"
+    Resource: "arn:aws:elasticbeanstalk:*:*:*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -54,7 +45,16 @@ package:
 functions:
   getBadge:
     handler: bin/getBadge
-
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: getBadge/{environmentId}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                environmentId: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
