@@ -26,6 +26,9 @@ In the future (if AWS adds more event sources):
 
 You could then use the S3 object URL to show your badges and be hands off with this process
 
+### Alternatives
+This is a task that could really be done with just the lambda function responding to a SNS topic. It doesn't really need to be build with this serverless framework and could be simpler. One of my goals for this project was really just to test of serverless framework and to learn more about lambda and golang
+
 --------
 Unfortunately for now we are forced to generate the SVG return it as a binary image/svg type to the API Gateway. It's a little bit too much overhead for such a small task.
 
